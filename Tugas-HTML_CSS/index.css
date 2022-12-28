@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+}
+
+header {
+  background-color: black;
+  color: aliceblue;
+  padding: 30px 0;
+}
+
+.logo {
+  grid-area: logo;
+}
+
+nav {
+  width: 85%;
+  margin: auto;
+  display: grid;
+  grid-template-areas: 'logo nav tombol';
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 30px;
+}
+
+.nav {
+  margin: auto;
+  grid-area: nav;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.tombol {
+  display: grid;
+  grid-area: tombol;
+  justify-content: end;
+}
+
+.tombol button {
+  padding: 10px;
+  background-color: yellow;
+  cursor: pointer;
+}
+
+.tombol a {
+  text-decoration: none;
+  color: black;
+}
+
+.judul {
+  width: 85%;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.judul h1 {
+  font-size: 3.4em;
+}
+
+.judul p {
+  font-size: 1.2em;
+}
+
+.gambar {
+  width: 85%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding-bottom: 30px;
+}
+
+.gambar img {
+  margin: auto;
+}
+
+.ganti {
+  background-color: black;
+}
+
+.konten {
+  width: 85%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: aliceblue;
+  grid-column-gap: 50px;
+  padding-bottom: 30px;
+}
+
+.konten h2 {
+  font-size: 2.3em;
+}
+
+.ganti1 {
+  background-color: silver;
+}
+
+.definisi {
+  width: 85%;
+  margin: auto;
+  padding: 30px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 50px;
+}
+
+.definisi h1 {
+  font-size: 2.3em;
+}
+
+.kontak {
+  width: 85%;
+  margin: auto;
+  color: aliceblue;
+  padding: 30px 0;
+}
+
+.kontak1 {
+  width: 48%;
+}
+
+.kontak1 h1 {
+  font-size: 2.3em;
+}
+
+.kontak1 button {
+  background-color: yellow;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.kontak1 a {
+  color: black;
+  text-decoration: none;
+}
+
+footer {
+  background-color: silver;
+}
+
+.botom {
+  width: 85%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 30px 0;
+  color: aliceblue;
+}
+
+.sosial {
+  text-align: right;
+}
+
+/* BREAKPOINT */
+
+@media only screen and (max-width: 992px) {
+  .gambar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .konten {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .konten1 {
+    margin-bottom: 40px;
+  }
+
+  .definisi {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .kontak1 {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .judul h1 br {
+    display: none;
+  }
+
+  .judul p br {
+    display: none;
+  }
+
+  .gambar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .judul h1 br {
+    display: none;
+  }
+
+  .judul p br {
+    display: none;
+  }
+
+  .judul h1 {
+    font-size: 2.5em;
+  }
+
+  .kontak1 {
+    width: 100%;
+  }
+}
