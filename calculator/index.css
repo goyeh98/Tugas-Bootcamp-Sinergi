@@ -1,0 +1,40 @@
+.container {
+  width: 30%;
+  background-color: #23252c;
+  border-radius: 20px;
+}
+
+.row-custom {
+  background-color: #2a2d35;
+  border-radius: 20px;
+}
+
+.button {
+  background-color: #23252c;
+  width: 40px;
+}
+
+/* .container{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: black;
+    margin: auto;
+    color: aliceblue;
+}
+.warna{
+    background-color: rgb(48, 46, 46);
+    border-radius: 5% 5% 0 0;
+}
+.display{
+}
+.row{
+    display: flex;
+}
+.button{
+    background-color: black;
+    flex-basis:;
+    margin-right: 25%;
+    font-size: 2em;
+}
+ */

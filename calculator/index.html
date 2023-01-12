@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container text-light">
+      <div class="position-absolute top-0 start-50 translate-middle-x mt-3 form-check form-switch form-custom">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+        <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+      </div>
+      <div class="py-5 display">
+        <h1 id="displayNumber">0</h1>
+      </div>
+
+      <div class="row row-custom">
+        <div class="row my-4 ms-3">
+          <div class="col">
+            <button class="btn p- button clear" style="color: #66f7d8">AC</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button negative" style="color: #66f7d8">+/-</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button" style="color: #66f7d8">%</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button operator" style="color: #db6e6a">:</button>
+          </div>
+        </div>
+        <div class="row my-4 ms-3">
+          <div class="col">
+            <button class="btn p- button text-light">7</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button text-light">8</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button text-light">9</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button operator" style="color: #db6e6a">x</button>
+          </div>
+        </div>
+        <div class="row my-4 ms-3">
+          <div class="col">
+            <button class="btn p- button text-light">4</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button text-light">5</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button text-light">6</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button operator" style="color: #db6e6a">-</button>
+          </div>
+        </div>
+        <div class="row my-4 ms-3">
+          <div class="col">
+            <button class="btn p- button text-light">1</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button text-light">2</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button text-light">3</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button operator" style="color: #db6e6a">+</button>
+          </div>
+        </div>
+        <div class="row my-4 ms-3">
+          <div class="col">
+            <button class="btn p- button text-light">C</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button text-light">0</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button text-light">.</button>
+          </div>
+          <div class="col">
+            <button class="btn p- button equals double" style="color: #db6e6a">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+      const calculator = {
+        displayNumber: '0',
+        operator: null,
+        firstNumber: null,
+        isWaitForSecondNumber: false,
+      };
+
+      function updateDisplay() {
+        document.querySelector('#displayNumber').innerText = calculator.displayNumber;
+      }
+
+      function clearCalculator() {
+        calculator.displayNumber = '0';
+        calculator.operator = null;
+        calculator.firstNumber = null;
+        calculator.isWaitForSecondNumber = false;
+      }
+
+      function inputDigit(digit) {
+        if (calculator.displayNumber === '0') {
+          calculator.displayNumber = digit;
+        } else {
+          calculator.displayNumber += digit;
+        }
+      }
+
+      function inverseNumber() {
+        if (calculator.displayNumber === '0') {
+          return;
+        }
+        calculator.displayNumber = calculator.displayNumber * -1;
+      }
+
+      function handleOperator(operator) {
+        if (!calculator.isWaitForSecondNumber) {
+          calculator.operator = operator;
+          calculator.isWaitForSecondNumber = true;
+          calculator.firstNumber = calculator.displayNumber;
+          calculator.displayNumber = '0';
+        } else {
+          alert('Operator sudah ditetapkan');
+        }
+      }
+
+      function performCalculation() {
+        if (calculator.firstNumber == null || calculator.operator == null) {
+          alert('Anda belum menetapkan operator');
+          return;
+        }
+
+        let result = 0;
+        if (calculator.operator === '+') {
+          result = parseInt(calculator.firstNumber) + parseInt(calculator.displayNumber);
+        } else if (calculator.operator === ':') {
+          result = parseInt(calculator.firstNumber) / parseInt(calculator.displayNumber);
+        } else if (calculator.operator === 'x') {
+          result = parseInt(calculator.firstNumber) * parseInt(calculator.displayNumber);
+        } else {
+          result = parseInt(calculator.firstNumber) - parseInt(calculator.displayNumber);
+        }
+
+        calculator.displayNumber = result;
+      }
+
+      const buttons = document.querySelectorAll('.button');
+      for (const button of buttons) {
+        button.addEventListener('click', function (event) {
+          // mendapatkan objek elemen yang diklik
+          const target = event.target;
+
+          if (target.classList.contains('clear')) {
+            clearCalculator();
+            updateDisplay();
+            return;
+          }
+
+          if (target.classList.contains('negative')) {
+            inverseNumber();
+            updateDisplay();
+            return;
+          }
+
+          if (target.classList.contains('equals')) {
+            performCalculation();
+            updateDisplay();
+            return;
+          }
+
+          if (target.classList.contains('operator')) {
+            handleOperator(target.innerText);
+            return;
+          }
+
+          inputDigit(target.innerText);
+          updateDisplay();
+        });
+      }
+    </script>
+  </body>
+</html>
