@@ -56,6 +56,7 @@
         <p style="margin-left: 10%">Total: {{ total }}</p>
 
         <button style="margin-left: 10%" @click="checkout">Checkout</button>
+        <router-link class="btn" :to="{ path: '/cart' }">Next Page</router-link>
     </div>
 </template>
 
